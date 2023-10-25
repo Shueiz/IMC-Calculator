@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados do IMC</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Resultados do IMC</h1>
+    {% load weight_range %} 
+
+    <table>
+        <tr>
+            <th>Data e Hora</th>
+            <th>Altura (metros)</th>
+            <th>Peso (quilogramas)</th>
+            <th>IMC</th>
+        </tr>
+        
+        {% for result in results %}
+        <tr>
+            <td>{{ result.timestamp }}</td>
+            <td>{{ result.height }}</td>
+            <td>{{ result.weight }}</td>
+            <td>{{ result.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="{% url 'calculate_imc' %}">Voltar à calculadora</a>
+
+
+    <h2>Faixa de Peso Ideal de acordo com o IMC</h2>
+        
+        <table>
+            <tr>
+                <th>IMC</th>
+                <th>Faixa de Peso Ideal</th>
+            </tr>
+            <tr>
+                <td>Menos de 18.5</td>
+                <td>Abaixo do Peso</td>
+            </tr>
+            <tr>
+                <td>18.5 - 24.9</td>
+                <td>Peso Normal</td>
+            </tr>
+            <tr>
+                <td>25 - 29.9</td>
+                <td>Sobrepeso</td>
+            </tr>
+            <tr>
+                <td>30 - 34.9</td>
+                <td>Obesidade Grau I</td>
+            </tr>
+            <tr>
+                <td>35 - 39.9</td>
+                <td>Obesidade Grau II</td>
+            </tr>
+            <tr>
+                <td>40 ou mais</td>
+                <td>Obesidade Grau III</td>
+            </tr>
+        </table>
+</body>
+</html>

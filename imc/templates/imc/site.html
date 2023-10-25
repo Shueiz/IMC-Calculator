@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular IMC</title>
+</head>
+<body>
+    <h1>Calculadora de IMC</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Nome:</label>
+        <input type="text" name="name" required><br><br>
+        <label for="weight">Peso (em kg):</label>
+        <input type="number" name="weight" step="0.01" required><br><br>
+        <label for="height">Altura (em metros):</label>
+        <input type="number" name="height" step="0.01" required><br><br>
+        <input type="submit" value="Calcular IMC">
+    </form>
+</body>
+</html>
